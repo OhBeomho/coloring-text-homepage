@@ -6,6 +6,10 @@
   let loading = true
 
   function loadDoc(doc) {
+    if (loading) {
+      return
+    }
+
     loading = true
 
     import(`../../assets/${doc}.md`).then((content) => {
