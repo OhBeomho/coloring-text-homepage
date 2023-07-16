@@ -1,9 +1,11 @@
 <script>
   import Layout from "../../components/Layout.svelte"
+  import MarkdownIt from "markdown-it"
 
   let currentDoc = "color"
   let docHTML
   let loading = false
+  const md = new MarkdownIt({ html: true })
 
   function loadDoc(doc) {
     if (loading) {
@@ -12,8 +14,8 @@
 
     loading = true
 
-    import(`../../assets/${doc}.md`).then((content) => {
-      docHTML = content.html
+    import(`../../assets/${doc}.md?raw`).then((data) => {
+      docHTML = md.render(data.default)
       currentDoc = doc
       loading = false
     })

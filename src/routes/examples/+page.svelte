@@ -1,11 +1,14 @@
 <script>
   import Layout from "../../components/Layout.svelte"
-  import { html as content } from "../../assets/examples.md"
+  import content from "../../assets/examples.md?raw"
+  import MarkdownIt from "markdown-it"
+
+  const md = new MarkdownIt({ html: true })
 </script>
 
 <Layout>
   <main>
-    {@html content}
+    {@html md.render(content)}
   </main>
 </Layout>
 
