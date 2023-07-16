@@ -3,7 +3,7 @@
 
   let currentDoc = "color"
   let docHTML
-  let loading = true
+  let loading = false
 
   function loadDoc(doc) {
     if (loading) {
@@ -65,6 +65,17 @@
     & .content {
       flex: 1;
       padding: 8px;
+    }
+
+    & table {
+      border: 1px solid black;
+      border-collapse: collapse;
+
+      & td,
+      th {
+        border: 1px solid black;
+        padding: 8px;
+      }
     }
   }
 </style>
